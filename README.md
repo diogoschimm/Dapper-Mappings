@@ -58,3 +58,20 @@ Projeto de exemplo para mappings do dapper com QueryMultiple e Query ( 1 - N )
       return result.FirstOrDefault();
   }
 ```
+
+
+## API
+
+```c#
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ClienteController : ControllerBase
+    {  
+        [HttpGet("{id}")]
+        public Cliente Get(int id, [FromServices]ClienteRepository clienteRepository)
+        {
+            return clienteRepository.GetByIdWithMapping(id);
+        }
+         
+    }
+```
