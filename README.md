@@ -75,3 +75,30 @@ Projeto de exemplo para mappings do dapper com QueryMultiple e Query ( 1 - N )
          
     }
 ```
+
+
+## Script Banco de dados
+
+```T-SQL
+create database TempClientes;
+go
+use TempClientes;
+go
+create table Cliente (
+	IdCliente int primary key identity(1,1) not null,
+	nomeCliente varchar(100) not null
+)
+create table Venda (
+	IdVenda int primary key identity(1,1) not null,
+	ValorTotal decimal(18,2) not null,
+	IdCliente int not null
+)
+
+insert into Cliente values ('Diogo Schimmelpfennig');
+declare @idCliente as  int = SCOPE_IDENTITY();
+insert into Venda values (10.00, @idCliente), (20.00, @idCliente), (14.98, @idCliente);
+
+insert into Cliente values ('Gelson Schimmelpfennig');
+set @idCliente  = SCOPE_IDENTITY();
+insert into Venda values (10.00, @idCliente), (20.00, @idCliente), (14.98, @idCliente);
+```
