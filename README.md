@@ -79,7 +79,7 @@ Projeto de exemplo para mappings do dapper com QueryMultiple e Query ( 1 - N )
 
 ## Script Banco de dados
 
-```T-SQL
+```TSQL
 create database TempClientes;
 go
 use TempClientes;
